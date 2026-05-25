@@ -4,11 +4,11 @@
 meta:
   lang: pt-BR
   title: "Eduardo Wanderley - Analista de Sistemas"
-  template: modern          # modern | professional
+  template: professional    # modern | professional
 
 personal:
   name: Eduardo Wanderley
-  headline: Analista de Sistemas · Python · Dados · APIs
+  headline: Analista de Sistemas · Python · Dados · APIs · ERP
   contact:
     - "Recife, PE"
     - "+55 (81) 9 9490-8227"
@@ -19,28 +19,30 @@ sections:
   profile:
     title: Perfil Profissional
     text: >
-      Analista de Sistemas com mais de 5 anos de experiência em desenvolvimento,
-      integração e análise de sistemas de software. Sólida atuação com bancos de
-      dados relacionais, APIs REST, automação de processos e infraestrutura em nuvem.
-      Mestrado em Ciência da Computação pela UFPE, com ênfase em análise de dados e
-      inteligência artificial. Experiência em ambientes corporativos e governo,
-      entregando soluções escaláveis com Python, SQL, Docker e GCP/AWS.
+      Analista de Sistemas com mais de 6 anos de experiência em desenvolvimento,
+      integração e sustentação de sistemas. Atua na construção de ERPs, APIs e
+      pipelines de dados, combinando Python, SQL, PostgreSQL, FastAPI, Docker e
+      nuvem para transformar processos de negócio em aplicações confiáveis.
+      Mestrado em Ciência da Computação pela UFPE, com ênfase em análise de dados
+      e inteligência artificial. Experiência em ambientes corporativos e governo,
+      com forte atuação em requisitos, modelagem de dados, automação e melhoria
+      de sistemas legados.
 
   skills:
     title: Competências Técnicas
     groups:
       - label: Linguagens
-        value: "Python, SQL (avançado)"
+        value: "Python, SQL avançado, JavaScript/React"
       - label: Bancos de Dados
-        value: "PostgreSQL, MySQL, BigQuery — modelagem, otimização de queries e controles de integridade"
+        value: "PostgreSQL, MySQL, BigQuery — modelagem relacional, integridade, migrações e otimização de consultas"
       - label: Integração & APIs
-        value: "FastAPI, Flask, REST APIs, WebSockets — desenvolvimento e consumo de integrações entre sistemas"
+        value: "FastAPI, Flask, REST APIs, WebSockets — desenho, desenvolvimento e consumo de integrações"
       - label: Infraestrutura & DevOps
-        value: "Docker, GCP, AWS, Linux, CI/CD, Apache Airflow"
+        value: "Docker, GCP, AWS, Linux, CI/CD, Apache Airflow, Alembic"
       - label: Monitoramento & Observabilidade
         value: "Datadog, dashboards de métricas, alertas e SLA"
       - label: Análise & Inteligência
-        value: "LangChain, FAISS, Pandas, Regressão Logística, Árvores de Decisão, Git"
+        value: "Pandas, LangChain, FAISS, ML supervisionado, Git"
 
   experience:
     title: Experiência Profissional
@@ -50,45 +52,45 @@ sections:
         role: Analista de Sistemas / Desenvolvedor de ERP
         period: Mai 2026 – Presente
         bullets:
-          - Projetou e desenvolveu do zero um ERP vertical completo para empresas de manutenção elétrica industrial (transformadores, subestações, SPDA), cobrindo mais de 10 módulos operacionais.
-          - "Modelou o fluxo completo de negócio: solicitação de serviço → orçamento com impostos configuráveis por NF → OS gerada automaticamente → ensaios elétricos → relatório técnico imprimível → faturamento → financeiro."
-          - Definiu e implementou dados mestre de clientes, fornecedores, equipamentos e funcionários com integridade referencial plena via PostgreSQL 17 + SQLAlchemy 2 + Alembic.
-          - "Implementou módulos financeiros completos: contas a receber, contas a pagar, previsão de pagamentos, contas bancárias e folha de pagamento."
-          - Realizou levantamento de requisitos junto ao cliente, mapeou processos operacionais e traduziu necessidades de negócio em especificações técnicas — arquitetura desktop local-first (Electron + React + FastAPI) sem dependência de nuvem.
+          - Projetou e desenvolveu um ERP vertical para manutenção elétrica industrial, cobrindo mais de 10 módulos operacionais em arquitetura Electron + React + FastAPI.
+          - "Modelou o ciclo ponta a ponta: solicitação de serviço → orçamento com impostos por NF → OS automática → ensaios elétricos → relatório técnico → faturamento → financeiro."
+          - Estruturou o domínio com clientes, fornecedores, equipamentos e funcionários em PostgreSQL 17, SQLAlchemy 2 e Alembic, preservando integridade referencial e rastreabilidade.
+          - Implementou rotinas financeiras de contas a receber/pagar, previsão de pagamentos, contas bancárias e folha de pagamento.
+          - Conduziu levantamento de requisitos e mapeamento de processos diretamente com o cliente, traduzindo operação industrial em regras de negócio e especificações técnicas.
       - org: Empetur – Governo de Pernambuco
         location: Recife, PE
         role: Analista de Sistemas
         period: Set 2025 – Presente
         bullets:
-          - Administrou e otimizou ambientes PostgreSQL e MySQL com políticas de monitoramento, controle de integridade e backup para sistemas internos de gestão.
-          - Desenvolveu serviços em Python para coleta e agregação automática de métricas de infraestrutura, consolidadas em dashboards analíticos para tomada de decisão.
-          - Projetou e implementou integrações via API entre diferentes departamentos, padronizando o fluxo de dados e eliminando inconsistências nos relatórios operacionais.
-          - Analisou requisitos de negócio e mapeou processos para propor melhorias em sistemas legados utilizados por equipes internas.
+          - Administrou ambientes PostgreSQL e MySQL para sistemas internos, com rotinas de integridade, backup, monitoramento e apoio a usuários.
+          - Desenvolveu serviços Python para coleta e agregação de métricas de infraestrutura, convertendo dados operacionais em dashboards de gestão.
+          - Projetou integrações via API entre departamentos, padronizando fluxo de dados e reduzindo divergências em relatórios operacionais.
+          - Mapeou requisitos e processos de equipes internas para priorizar melhorias em sistemas legados críticos.
       - org: Campello & Siqueira
         location: Recife, PE
         role: Analista de Sistemas / Engenheiro de Dados
         period: Jan 2024 – Abr 2025
         bullets:
-          - Responsável pelos pipelines ETL e modelos de dados que sustentavam os dashboards financeiros e operacionais da empresa, garantindo acurácia e disponibilidade das informações.
-          - Construiu e manteve DAGs no Apache Airflow com controle de SLA, alertas e lógica de reprocessamento para garantir atualização diária dos dados.
-          - Otimizou transformações SQL no BigQuery e PostgreSQL, reduzindo custos de processamento e melhorando o tempo de resposta das consultas analíticas.
-          - Implementou camadas de verificação de qualidade de dados validando esquema, completude e regras de negócio antes da disponibilização para os usuários finais.
-          - Desenvolveu conectores de API para integrar fontes de dados externas, ampliando a cobertura analítica dos painéis de gestão.
+          - Liderou pipelines ETL e modelos de dados para dashboards financeiros e operacionais, garantindo consistência, disponibilidade e rastreabilidade das informações.
+          - Construiu DAGs no Apache Airflow com SLA, alertas e reprocessamento, mantendo atualização diária de dados críticos.
+          - Otimizou consultas e transformações SQL no BigQuery e PostgreSQL, reduzindo custo de processamento e tempo de resposta analítico.
+          - Implementou validações de qualidade de dados para esquema, completude e regras de negócio antes da publicação para usuários finais.
+          - Desenvolveu conectores de API para fontes externas, ampliando a cobertura dos painéis de gestão.
       - org: Softex
         location: Recife, PE
         role: Analista de Sistemas (Residente)
         period: Jan 2023 – Jan 2024
         bullets:
-          - Desenvolveu serviços de coleta de dados e monitoramento com backends em Flask para análise em tempo real de telemetria de sistemas robóticos.
-          - Entregou datasets estruturados para modelos preditivos e fluxos de otimização de sistemas embarcados.
-          - Utilizou APIs REST e canais WebSocket para mover dados de sensores em tempo real para camadas de análise e visualização.
+          - Desenvolveu backends Flask para coleta, monitoramento e análise em tempo real de telemetria de sistemas robóticos.
+          - Preparou datasets estruturados para modelos preditivos e fluxos de otimização de sistemas embarcados.
+          - Implementou APIs REST e canais WebSocket para movimentar dados de sensores até camadas de análise e visualização.
       - org: Freelance
         location: Recife, PE
         role: Desenvolvedor de Software
         period: Fev 2020 – Nov 2022
         bullets:
-          - Entregou aplicações web para o C.E.S.A.R. e o Hospital Português, incluindo geração automatizada de relatórios mensais e perfis de usuários orientados a dados.
-          - Levantou requisitos com stakeholders, documentou especificações funcionais e entregou soluções dentro do prazo acordado.
+          - Entregou aplicações web para C.E.S.A.R. e Hospital Português, incluindo relatórios automatizados e perfis de usuários orientados a dados.
+          - Conduziu levantamento de requisitos, documentação funcional e entregas incrementais com stakeholders técnicos e de negócio.
 
   projects:
     title: Projetos
@@ -98,14 +100,14 @@ sections:
         role: Sistema de Automação com IA
         period: Out 2025 – Nov 2025
         bullets:
-          - Desenvolveu sistema Python/LangChain/FastAPI com persistência em PostgreSQL e busca semântica via FAISS, implantado com Docker e monitorado pelo Datadog.
+          - Desenvolveu sistema Python/LangChain/FastAPI com PostgreSQL, busca semântica FAISS, Docker e Datadog para automatizar atendimento e consulta a conhecimento interno.
       - org: Mestrado em Ciência da Computação – UFPE
         location: Recife, PE
         role: Mineração de Dados em Desempenho Educacional
         period: Mar 2024 – Jul 2024
         bullets:
           - Analisou base de dados SAEB (~5.500 municípios brasileiros) para modelar desempenho escolar com Regressão Logística e Árvores de Decisão em Python.
-          - Gerou regras interpretáveis com métricas de confiança e lift, traduzindo os resultados em recomendações aplicáveis para gestores municipais de educação.
+          - Gerou regras interpretáveis com confiança e lift, transformando resultados estatísticos em recomendações para gestores municipais de educação.
 
   education:
     title: Formação Acadêmica

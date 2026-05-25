@@ -133,6 +133,8 @@ def render_html(data: dict) -> str:
     env = Environment(
         loader=FileSystemLoader(TEMPLATE_DIR),
         autoescape=select_autoescape(["html", "j2"]),
+        trim_blocks=True,
+        lstrip_blocks=True,
     )
     tpl_key = data["meta"].get("template", DEFAULT_TEMPLATE)
     template = env.get_template(TEMPLATES[tpl_key])
@@ -173,6 +175,15 @@ def find_browser() -> list[str] | None:
             Path(local) / "Google/Chrome/Application/chrome.exe",
             Path(pf) / "Microsoft/Edge/Application/msedge.exe",
             Path(pf86) / "Microsoft/Edge/Application/msedge.exe",
+        ]:
+            if exe.exists():
+                candidates.append([str(exe)])
+    elif platform.system() == "Darwin":
+        for exe in [
+            Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
+            Path("/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"),
+            Path.home() / "Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+            Path.home() / "Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
         ]:
             if exe.exists():
                 candidates.append([str(exe)])
