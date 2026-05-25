@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="{{ meta.lang }}">
+<head>
+<meta charset="UTF-8">
+<title>{{ meta.title }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0c1222;
+  --ink-soft: #3d4f6f;
+  --ink-muted: #64748b;
+  --surface: #ffffff;
+  --sidebar: #0f172a;
+  --sidebar-soft: #cbd5e1;
+  --accent: #0ea5e9;
+  --accent-deep: #0284c7;
+  --accent-glow: #38bdf8;
+  --line: #e2e8f0;
+  --card: #f8fafc;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  font-size: 9.2pt;
+  line-height: 1.55;
+  color: var(--ink);
+  background: #eef2f7;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.sheet {
+  max-width: 820px;
+  margin: 0 auto;
+  background: var(--surface);
+  display: grid;
+  grid-template-columns: 232px 1fr;
+  min-height: 100vh;
+}
+/* ---- sidebar ---- */
+aside {
+  background: linear-gradient(175deg, #0f172a 0%, #1e293b 55%, #0f2744 100%);
+  color: var(--sidebar-soft);
+  padding: 28px 22px 24px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.avatar {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent) 0%, #6366f1 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 22pt;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 14px;
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.35);
+}
+aside h1 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 19pt;
+  font-weight: 400;
+  color: #f8fafc;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.headline {
+  font-size: 8pt;
+  color: var(--accent-glow);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+.side-section { margin-bottom: 18px; }
+.side-section h3 {
+  font-size: 7pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #94a3b8;
+  margin-bottom: 8px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+}
+.contact-item {
+  font-size: 8.2pt;
+  padding: 4px 0;
+  line-height: 1.45;
+  word-break: break-word;
+}
+.contact-item::before {
+  content: "";
+  display: inline-block;
+  width: 5px; height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-right: 7px;
+  vertical-align: middle;
+  margin-top: -1px;
+}
+.pill-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
+.pill {
+  font-size: 7.2pt;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: rgba(14, 165, 233, 0.15);
+  color: #bae6fd;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  line-height: 1.3;
+}
+.pill strong { color: #e0f2fe; font-weight: 600; }
+.lang-item {
+  font-size: 8.2pt;
+  margin-bottom: 5px;
+}
+.lang-item strong { color: #f1f5f9; font-weight: 600; }
+.lang-level {
+  display: block;
+  font-size: 7.5pt;
+  color: #94a3b8;
+  margin-top: 1px;
+}
+/* ---- main ---- */
+main { padding: 26px 30px 24px 28px; }
+.section { margin-bottom: 16px; }
+.section-title {
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-deep);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+  border-radius: 2px;
+}
+.profile-text {
+  font-size: 9.3pt;
+  color: var(--ink-soft);
+  line-height: 1.62;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+/* experience cards + timeline */
+.timeline { position: relative; padding-left: 14px; }
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 3px; top: 6px; bottom: 6px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--line) 100%);
+  border-radius: 2px;
+}
+.entry {
+  position: relative;
+  margin-bottom: 11px;
+  padding: 10px 12px 10px 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  orphans: 3; widows: 3;
+}
+.entry::before {
+  content: "";
+  position: absolute;
+  left: -14px; top: 14px;
+  width: 9px; height: 9px;
+  background: var(--surface);
+  border: 2.5px solid var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--surface);
+}
+.entry-header { break-after: avoid; page-break-after: avoid; }
+.row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.org { font-weight: 700; font-size: 9.8pt; color: var(--ink); }
+.role { font-size: 8.8pt; color: var(--accent-deep); font-weight: 600; margin: 2px 0 4px; }
+.meta-right { text-align: right; flex-shrink: 0; }
+.period {
+  font-size: 7.8pt;
+  font-weight: 600;
+  color: #fff;
+  background: var(--ink);
+  padding: 2px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+  display: inline-block;
+}
+.loc { font-size: 7.8pt; color: var(--ink-muted); margin-top: 2px; }
+ul { margin: 4px 0 0; padding: 0; list-style: none; }
+li {
+  font-size: 8.8pt;
+  color: var(--ink-soft);
+  padding: 2px 0 2px 12px;
+  position: relative;
+  line-height: 1.5;
+}
+li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 8px;
+  width: 4px; height: 4px;
+  background: var(--accent);
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+/* education */
+.edu-grid { display: grid; gap: 8px; }
+.edu-card {
+  padding: 9px 12px;
+  background: var(--card);
+  border-radius: 8px;
+  border-left: 3px solid var(--accent);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.edu-org { font-weight: 700; font-size: 9.5pt; }
+.edu-meta { font-size: 8.5pt; color: var(--ink-muted); margin-top: 2px; }
+.edu-degree { font-size: 8.8pt; color: var(--accent-deep); font-weight: 600; }
+
+@page { margin: 14px 0 12px 0; size: A4; }
+@page :first { margin-top: 0; }
+@media print {
+  body { background: #fff; }
+  .sheet { box-shadow: none; min-height: auto; }
+  main { padding: 20px 24px 18px 22px; }
+  aside { padding: 22px 18px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<aside>
+  <div class="avatar">{{ personal.name[:1] }}</div>
+  <h1>{{ personal.name }}</h1>
+  {% if personal.headline %}
+  <p class="headline">{{ personal.headline }}</p>
+  {% endif %}
+
+  {% if personal.contact %}
+  <div class="side-section">
+    <h3>Contato</h3>
+    {% for item in personal.contact %}
+    <div class="contact-item">{{ item }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if sections.skills and sections.skills.groups %}
+  <div class="side-section">
+    <h3>{{ sections.skills.title }}</h3>
+    <div class="pill-wrap">
+    {% for skill in sections.skills.groups %}
+      <span class="pill"><strong>{{ skill.label }}</strong> {{ skill.value }}</span>
+    {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if sections.languages and sections.languages.list %}
+  <div class="side-section">
+    <h3>{{ sections.languages.title }}</h3>
+    {% for lang in sections.languages.list %}
+    <div class="lang-item">
+      <strong>{{ lang.label }}</strong>
+      <span class="lang-level">{{ lang.value }}</span>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</aside>
+
+<main>
+
+  {% if sections.profile %}
+  <div class="section">
+    <div class="section-title">{{ sections.profile.title }}</div>
+    <p class="profile-text">{{ sections.profile.text }}</p>
+  </div>
+  {% endif %}
+
+  {% if sections.experience and sections.experience.entries %}
+  <div class="section">
+    <div class="section-title">{{ sections.experience.title }}</div>
+    <div class="timeline">
+    {% for entry in sections.experience.entries %}
+      <div class="entry">
+        <div class="entry-header">
+          <div class="row">
+            <span class="org">{{ entry.org }}</span>
+            <div class="meta-right">
+              <span class="period">{{ entry.period }}</span>
+              <div class="loc">{{ entry.location }}</div>
+            </div>
+          </div>
+          <div class="role">{{ entry.role }}</div>
+        </div>
+        {% if entry.bullets %}
+        <ul>{% for bullet in entry.bullets %}<li>{{ bullet }}</li>{% endfor %}</ul>
+        {% endif %}
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if sections.projects and sections.projects.entries %}
+  <div class="section">
+    <div class="section-title">{{ sections.projects.title }}</div>
+    <div class="timeline">
+    {% for entry in sections.projects.entries %}
+      <div class="entry">
+        <div class="entry-header">
+          <div class="row">
+            <span class="org">{{ entry.org }}</span>
+            <div class="meta-right">
+              <span class="period">{{ entry.period }}</span>
+              <div class="loc">{{ entry.location }}</div>
+            </div>
+          </div>
+          <div class="role">{{ entry.role }}</div>
+        </div>
+        {% if entry.bullets %}
+        <ul>{% for bullet in entry.bullets %}<li>{{ bullet }}</li>{% endfor %}</ul>
+        {% endif %}
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if sections.education and sections.education.entries %}
+  <div class="section">
+    <div class="section-title">{{ sections.education.title }}</div>
+    <div class="edu-grid">
+    {% for edu in sections.education.entries %}
+      <div class="edu-card">
+        <div class="edu-org">{{ edu.org }}</div>
+        <div class="edu-degree">{{ edu.degree }} · {{ edu.details }}</div>
+        <div class="edu-meta">{{ edu.location }}</div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+</main>
+</div>
+</body>
+</html>

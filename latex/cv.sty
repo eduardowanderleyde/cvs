@@ -1,0 +1,135 @@
+% cv.sty — estilo AltaCV / Awesome-CV para Overleaf (XeLaTeX)
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cv}[2026/05/22 Eduardo CV style]
+
+\RequirePackage[margin=1.4cm, top=1.1cm, bottom=1.1cm]{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{titlesec}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\RequirePackage{fontawesome5}
+\RequirePackage{tabularx}
+\RequirePackage{ragged2e}
+\RequirePackage{hyperref}
+\RequirePackage{microtype}
+\RequirePackage{parskip}
+\RequirePackage{paracol}
+\RequirePackage{fontspec}
+
+\definecolor{cvsidebar}{HTML}{1E293B}
+\definecolor{cvsidebarsoft}{HTML}{CBD5E1}
+\definecolor{cvaccent}{HTML}{0EA5E9}
+\definecolor{cvaccentdark}{HTML}{0284C7}
+\definecolor{cvink}{HTML}{0F172A}
+\definecolor{cvmuted}{HTML}{64748B}
+\definecolor{cvline}{HTML}{E2E8F0}
+
+% ---- Fontes locais (pasta assets/fonts) ----
+\setmainfont{Roboto}[
+  Path=assets/fonts/,
+  Extension=.ttf,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold,
+  Ligatures=TeX,
+]
+\newfontfamily\cvnamefont{Oswald}[
+  Path=assets/fonts/,
+  Extension=.ttf,
+  UprightFont=*-Bold,
+  LetterSpace=0.5,
+]
+\newfontfamily\cvsectionfont{Roboto}[
+  Path=assets/fonts/,
+  Extension=.ttf,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold,
+  Scale=0.95,
+]
+
+\hypersetup{colorlinks=true, urlcolor=cvaccent, linkcolor=cvink}
+
+\setlist[itemize]{leftmargin=1.2em, topsep=2pt, itemsep=2pt, parsep=0pt}
+\setlength{\parskip}{4pt}
+\columnratio{0.30}{0.68}
+\setlength{\columnsep}{1.1cm}
+
+% ---- Sidebar ----
+\newcommand{\cvsidebarbg}{%
+  \tikz[remember picture,overlay] {%
+    \fill[cvsidebar] (current page.north west) rectangle ([xshift=0.30\paperwidth]current page.south west);%
+    \node[opacity=0.18, inner sep=0] at ([xshift=0.15\paperwidth,yshift=-0.5\paperheight]current page.north west) {%
+      \includegraphics[width=0.32\paperwidth,height=\paperheight,keepaspectratio=false]{assets/images/sidebar-accent.jpg}%
+    };%
+  }%
+}
+
+\newcommand{\cvphoto}[1]{%
+  \begin{center}
+  \begin{tikzpicture}
+    \clip[rounded corners=8pt] (0,0) rectangle (3.2cm,3.2cm);
+    \node at (1.6cm,1.6cm) {\includegraphics[width=3.2cm,height=3.2cm,keepaspectratio]{#1}};
+  \end{tikzpicture}
+  \end{center}
+  \vspace{0.4em}
+}
+
+\newcommand{\cvname}[1]{{\cvnamefont\color{white}\fontsize{22}{24}\selectfont #1\par}}
+\newcommand{\cvheadline}[1]{{\color{cvaccent}\small\bfseries #1\par\vspace{0.6em}}}
+
+\newcommand{\cvsideheading}[1]{%
+  \vspace{0.5em}%
+  {\cvsectionfont\color{cvsidebarsoft}\fontsize{7}{8}\selectfont\MakeUppercase{#1}\par}%
+  \vspace{0.25em}{\color{cvsidebarsoft!40}\rule{\linewidth}{0.4pt}\par\vspace{0.35em}}%
+}
+
+\newcommand{\cvcontact}[2]{%
+  {\color{white}\small #1\ {\color{cvsidebarsoft}#2}\par\vspace{0.25em}}%
+}
+
+\newcommand{\cvskillpill}[2]{%
+  \tikz[baseline=(char.base)]{%
+    \node[fill=cvaccent!20, draw=cvaccent!50, rounded corners=3pt, inner sep=4pt, text width=\dimexpr\linewidth-8pt] (char) {%
+      {\color{white}\bfseries\scriptsize #1}\ {\color{cvsidebarsoft}\scriptsize #2}%
+    };%
+  }\\[0.35em]%
+}
+
+\newcommand{\cvlanguage}[2]{%
+  {\color{white}\textbf{#1}\par}%
+  {\color{cvsidebarsoft}\scriptsize #2\par\vspace{0.35em}}%
+}
+
+% ---- Conteúdo principal ----
+\newcommand{\cvsection}[1]{%
+  \vspace{0.35em}%
+  {\cvsectionfont\color{cvaccentdark}\fontsize{9}{10}\selectfont\MakeUppercase{#1}}%
+  \hfill{\color{cvaccent}\rule{0.55\linewidth}{1.2pt}}\par\vspace{0.45em}%
+}
+
+\newcommand{\cventry}[5]{%
+  \vspace{0.15em}%
+  {\large\bfseries\color{cvink}#1}\hfill{\color{cvmuted}\scriptsize #3}\par
+  {\color{cvaccentdark}\bfseries\small #2}\hfill{\color{cvmuted}\scriptsize #4}\par
+  \vspace{0.15em}%
+  #5%
+  \vspace{0.45em}%
+}
+
+\newcommand{\cvbullets}{%
+  \begin{itemize}[label=\textcolor{cvaccent}{\small$\bullet$}]%
+}
+\newcommand{\cvbulletsend}{\end{itemize}}
+
+\newcommand{\cvedu}[4]{%
+  \vspace{0.1em}%
+  \noindent\colorbox{cvline!40}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep}{%
+      {\bfseries\color{cvink}#1}\hfill{\scriptsize\color{cvmuted}#3}\par
+      {\color{cvaccentdark}\small #2}\par
+      {\scriptsize\color{cvmuted}#4}%
+    }%
+  }\par\vspace{0.35em}%
+}
+
+\endinput

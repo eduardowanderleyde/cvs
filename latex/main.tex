@@ -1,0 +1,28 @@
+% !TEX program = xelatex
+% =============================================================================
+% OVERLEAF: zipar esta pasta "latex" inteira e fazer Upload Project.
+% Compiler: XeLaTeX  |  Main document: main.tex
+% =============================================================================
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{cv}
+
+\begin{document}
+\cvsidebarbg
+\begin{paracol}{2}
+
+% --- Sidebar (foto, contato, skills) ---
+\switchcolumn[0]
+\color{white}
+\input{content/sidebar}
+
+% --- Corpo do CV ---
+\switchcolumn[1]
+\color{cvink}
+\input{content/profile}
+\input{content/experience}   % lista de empregos (1 arquivo por job)
+\input{content/projects}     % 1 arquivo por projeto
+\input{content/education}
+
+\end{paracol}
+\end{document}

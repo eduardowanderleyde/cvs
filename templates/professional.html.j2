@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="{{ meta.lang }}">
+<head>
+<meta charset="UTF-8">
+<title>{{ meta.title }}</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Calibri, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 9.6pt;
+  line-height: 1.5;
+  color: #1a1a1a;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 46px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.header { text-align: center; padding-bottom: 12px; margin-bottom: 4px; border-bottom: 2.5px solid #1b3960; }
+h1 { font-size: 23pt; font-weight: 700; color: #1b3960; letter-spacing: -0.3px; margin-bottom: 6px; }
+.contact { font-size: 9pt; color: #666; }
+.sep { margin: 0 7px; color: #bbb; }
+h2 {
+  font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px;
+  color: #1b3960; border-bottom: 1.5px solid #1b3960; padding-bottom: 3px;
+  margin: 14px 0 8px;
+  break-after: avoid; page-break-after: avoid;
+}
+.section-block { break-inside: avoid; page-break-inside: avoid; }
+.entry {
+  margin-bottom: 10px;
+  break-inside: avoid; page-break-inside: avoid;
+  orphans: 3; widows: 3;
+}
+.entry-header { break-after: avoid; page-break-after: avoid; }
+.entry ul { break-inside: avoid; page-break-inside: avoid; }
+.row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.org { font-weight: 700; font-size: 10pt; color: #111; }
+.role { font-style: italic; font-size: 9pt; color: #555; margin-bottom: 3px; }
+.period { font-size: 8.5pt; color: #666; white-space: nowrap; }
+.loc { font-size: 8.5pt; color: #666; font-weight: 600; }
+ul { margin: 3px 0 0; padding: 0; list-style: none; }
+li { font-size: 9pt; padding: 1.5px 0 1.5px 14px; position: relative; line-height: 1.48; }
+li::before { content: "▸"; position: absolute; left: 0; color: #2558a8; font-size: 8.5pt; top: 1.5px; }
+.sk { font-size: 9pt; margin-bottom: 3px; line-height: 1.55; }
+.sk strong { color: #1b3960; }
+.edu { margin-bottom: 7px; break-inside: avoid; page-break-inside: avoid; }
+.edu-sub { font-style: italic; font-size: 9pt; color: #555; }
+.profile-text { font-size: 9.5pt; }
+.lang-row { font-size: 9pt; line-height: 1.55; }
+.lang-row strong { color: #1b3960; }
+.lang-gap { margin-right: 1.25em; }
+@page { margin: 22px 0 10px 0; size: A4; }
+@page :first { margin-top: 0; }
+@media print { body { padding: 22px 38px; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>{{ personal.name }}</h1>
+  <p class="contact">{% for item in personal.contact %}{% if not loop.first %}<span class="sep">|</span>{% endif %}{{ item }}{% endfor %}</p>
+</div>
+
+{% if sections.profile %}
+<h2>{{ sections.profile.title }}</h2>
+<p class="profile-text">{{ sections.profile.text }}</p>
+{% endif %}
+
+{% if sections.skills %}
+<h2>{{ sections.skills.title }}</h2>
+<div class="section-block">
+{% for skill in sections.skills.groups %}
+<div class="sk"><strong>{{ skill.label }}:</strong> {{ skill.value }}</div>
+{% endfor %}
+</div>
+{% endif %}
+
+{% if sections.experience and sections.experience.entries %}
+<h2>{{ sections.experience.title }}</h2>
+{% for entry in sections.experience.entries %}
+<div class="entry">
+  <div class="entry-header">
+    <div class="row"><span class="org">{{ entry.org }}</span><span class="loc">{{ entry.location }}</span></div>
+    <div class="row"><span class="role">{{ entry.role }}</span><span class="period">{{ entry.period }}</span></div>
+  </div>
+  {% if entry.bullets %}
+  <ul>{% for bullet in entry.bullets %}<li>{{ bullet }}</li>{% endfor %}</ul>
+  {% endif %}
+</div>
+{% endfor %}
+{% endif %}
+
+{% if sections.projects and sections.projects.entries %}
+<h2>{{ sections.projects.title }}</h2>
+{% for entry in sections.projects.entries %}
+<div class="entry">
+  <div class="entry-header">
+    <div class="row"><span class="org">{{ entry.org }}</span><span class="loc">{{ entry.location }}</span></div>
+    <div class="row"><span class="role">{{ entry.role }}</span><span class="period">{{ entry.period }}</span></div>
+  </div>
+  {% if entry.bullets %}
+  <ul>{% for bullet in entry.bullets %}<li>{{ bullet }}</li>{% endfor %}</ul>
+  {% endif %}
+</div>
+{% endfor %}
+{% endif %}
+
+{% if sections.education and sections.education.entries %}
+<h2>{{ sections.education.title }}</h2>
+{% for edu in sections.education.entries %}
+<div class="edu">
+  <div class="row"><span class="org">{{ edu.org }}</span><span class="loc">{{ edu.location }}</span></div>
+  <div class="edu-sub">{{ edu.degree }} &nbsp;·&nbsp; {{ edu.details }}</div>
+</div>
+{% endfor %}
+{% endif %}
+
+{% if sections.languages and sections.languages.items %}
+<h2>{{ sections.languages.title }}</h2>
+<div class="lang-row">
+{% for lang in sections.languages.list %}
+<span class="lang-gap"><strong>{{ lang.label }}:</strong> {{ lang.value }}</span>
+{% endfor %}
+</div>
+{% endif %}
+
+</body>
+</html>
